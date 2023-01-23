@@ -21,7 +21,7 @@ diamondsSelector.addEventListener('click', () => {
     setTimeout(() => diamondsSelector.classList.remove('diamond-clicked'), 40);
     diamondsCounter += diamondsPerClick;
     updateMainContainer();
-    checkIfBonusesAvailable();
+    checkIfUpgradesReady();
 });
 
 // DON'T ADD EVENT LISTENER TO EACH BUTTON -> EVENTS SHOULD BE DELEGATED TO THE PARENT AND BASED ON THE CONDITION SOME ACTIONS SHOULD BE PERFORMED (e.target)
@@ -31,30 +31,16 @@ levelUpButtons.forEach(function(button, index) {
                diamondsPerClick += upgradesBonusMultiplier.at(index) + 0.1 * diamondsPerSecond;
                diamondsPerSecond += upgradesBonusMultiplier.at(index);
                diamondsCounter -= upgradesCosts.at(index);
-               upgradesCosts[i-1] = Math.round(upgradesCosts.at(index) * 1.3);
+               upgradesCosts[index] = Math.round(upgradesCosts.at(index) * 1.3);
                updateMainContainer();
-               setValues();
-               checkIfBonusesAvailable();
+               setCostAndUpgradeValues();
+               checkIfUpgradesReady();
            }
        })
 })
 
-// Event Listener for Level-Up Buttons click
-// for(let i=1; i<=5; i++){
-//     levelUpButtons.at(i-1).addEventListener('click', () => {
-//         if(levelUpButtons.at(i-1).classList.contains('level_up_button_ready')){
-//             levels[i-1]++;
-//             diamondsPerClick += upgradesBonusMultiplier.at(i-1) + 0.1 * diamondsPerSecond;
-//             diamondsPerSecond += upgradesBonusMultiplier.at(i-1);
-//             diamondsCounter -= upgradesCosts.at(i-1);
-//             upgradesCosts[i-1] = Math.round(upgradesCosts.at(i-1) * 1.3);
-//             updateMainContainer();
-//             setValues();
-//             checkIfBonusesAvailable();
-//         }
-//     });
-// }
-function checkIfBonusesAvailable(){
+
+function checkIfUpgradesReady(){
     for(let i=1; i<=5; i++){
         if(Number(gainedDiamondsSelector.innerText) >= upgradesCosts.at(i-1))
             document.querySelector('#levelUpButton'+i).classList.add('level_up_button_ready');
@@ -69,7 +55,7 @@ function updateMainContainer(){
     diamondsPerClickSelector.innerText = Math.round(10*diamondsPerClick)/10;
 }
 
-function setValues(){
+function setCostAndUpgradeValues(){
     for(let i=1; i<=5; i++){
         let costId = '#levelUpButton' + i + '_cost';
         let upgradeId = '#levelUpButton' + i + '_upgrade'
@@ -82,10 +68,10 @@ function setValues(){
 const interval = window.setInterval(function (){
     diamondsCounter += diamondsPerSecond;
     updateMainContainer();
-    checkIfBonusesAvailable();
+    checkIfUpgradesReady();
 
     // dynamically change amount of in page tab
-    document.title = '(' + Math.round(diamondsCounter) + ' diamonds) Diamond Digger';
+    document.title = Math.round(diamondsCounter) + ' diamonds - Diamond Digger';
 }, 1000);
 
-setValues();
+setCostAndUpgradeValues();

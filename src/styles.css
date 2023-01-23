@@ -79,20 +79,17 @@ p{
     /*justify-content: space-between;*/
     gap: 20px;
     justify-content: space-between;
-
-
 }
 
-
 .upgrade_name{
-    color: #55FFFF;
+    color: #00AAAA;
     font-weight: bold;
     text-align: left;
-    width: 200px;
+    width: 220px;
 }
 
 .subupgrade_name{
-    color: #00AAAA;
+    color: #55FFFF;
     font-weight: bold;
     gap: 5px;
 }
