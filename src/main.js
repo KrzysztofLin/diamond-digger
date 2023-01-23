@@ -24,7 +24,6 @@ diamondsSelector.addEventListener('click', () => {
     checkIfUpgradesReady();
 });
 
-// DON'T ADD EVENT LISTENER TO EACH BUTTON -> EVENTS SHOULD BE DELEGATED TO THE PARENT AND BASED ON THE CONDITION SOME ACTIONS SHOULD BE PERFORMED (e.target)
 levelUpButtons.forEach(function(button, index) {
        button.addEventListener('click', function() {
            if(button.classList.contains('level_up_button_ready')) {
@@ -64,14 +63,11 @@ function setCostAndUpgradeValues(){
     }
 }
 
-// Interval for cookies per sec
 const interval = window.setInterval(function (){
     diamondsCounter += diamondsPerSecond;
     updateMainContainer();
     checkIfUpgradesReady();
-
-    // dynamically change amount of in page tab
     document.title = Math.round(diamondsCounter) + ' diamonds - Diamond Digger';
-}, 1000);
+    }, 1000);
 
 setCostAndUpgradeValues();
