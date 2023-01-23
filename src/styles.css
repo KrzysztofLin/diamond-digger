@@ -1,0 +1,126 @@
+body{
+    background-image: url("images/ore.jpeg");
+    font-family: 'Inter', sans-serif;
+    color: #FFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+p{
+
+    margin: 0;
+}
+
+.main_container{
+    width: 1000px;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    background-color: #FFFFF8;
+    border-radius: 8px;
+    padding: 10px;
+    border: solid #AAAAAA;
+}
+
+
+.row-inner{
+    display: flex;
+    gap: 15px;
+    font-weight: bold;
+    color: #AAAAAA;
+    align-items: center;
+    flex-direction: row;
+}
+
+.left_column{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+}
+
+.right_column{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    justify-content: space-evenly;
+    padding: 0 50px;
+}
+
+.project_name{
+    color: #00AAAA;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.diamond-small{
+    width: 36px;
+    height: auto;
+}
+
+
+.upgrade{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.upgrade_name{
+    color: #55FFFF;
+    font-weight: bold;
+}
+
+.subupgrade_name{
+    color: #00AAAA;
+    font-weight: bold;
+    gap: 5px;
+}
+
+
+#diamond{
+    width: 250px;
+    height: auto;
+    margin: 20px 0;
+    border-radius: 150px;
+    user-select: none;
+    transition: transform 0.1s linear;
+}
+
+.diamond-clicked{
+    transform: scale(0.9);
+}
+
+.diamond:hover{
+    cursor: pointer;
+}
+
+.level-up-button{
+    width: 150px;
+    height: 50px;
+    background-color: #858585;
+    color: #525252;
+    border: solid #525252;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 15px;
+
+}
+
+.level_up_button_ready{
+    background-color: #FFFFF8;
+    border: solid #00AAAA;
+    color: #55FFFF;
+}
+

@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Diamond Digger</title>
+
+    <script type="module" src="main.js"></script>
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+
+<main class="main_container">
+    <section class="left_column">
+
+        <span class="project_name"> Diamond Digger </span>
+
+        <section class="row-inner">
+            <p>Digged up diamonds: </p>
+            <p id="gained_diamonds">0</p>
+        </section>
+
+        <img src="images/diamond_icon2.png" alt="diamond" id="diamond">
+
+        <section class="row-inner">
+            <p>Diamonds per click: </p>
+            <p id="diamonds_per_click">1</p>
+        </section>
+
+        <section class="row-inner">
+            <p> Diamonds per second: </p>
+            <p id="diamonds_per_sec">0</p>
+        </section>
+
+    </section>
+
+    <section class="right_column">
+        <div class="upgrade">
+            <div>
+                <p class="upgrade_name"> Wooden Pickaxe: <span  id="levelUpButton1_cost"></span></p>
+                <p class="subupgrade_name"> Diamonds per second: <span id="levelUpButton1_upgrade"> </span></p>
+            </div>
+            <button class="level-up-button" id="levelUpButton1">Level Up!</button>
+        </div>
+
+        <div class="upgrade">
+            <div>
+                <div class="upgrade_name"> Stone Pickaxe: <span id="levelUpButton2_cost"></span></div>
+                <div><span class="subupgrade_name"> Diamonds per second </span><span id="levelUpButton2_upgrade"></span></div>
+            </div>
+            <button class="level-up-button" id="levelUpButton2">Level Up!</button>
+        </div>
+
+        <div class="upgrade">
+            <div>
+                <div class="upgrade_name"> Steel Pickaxe: <span id="levelUpButton-3-cost"></span></div>
+                <div><span class="bonus-name-darker">LEVEL <span id="levelUpButton-3-level"></span></span> (+<span id="bonus-3-upgrade"></span> cookies per sec)</div>
+            </div>
+            <button class="level-up-btn" id="button-3">Level Up!</button>
+        </div>
+
+        <div class="upgrade">
+            <div>
+                <div class="upgrade_name"> Gold Pickaxe: <span id="bonus-4-cost"></span></div>
+                <div><span class="bonus-name-darker">LEVEL <span id="bonus-4-level"></span></span> (+<span id="bonus-4-upgrade"></span> cookies per sec)</div>
+            </div>
+            <button class="level-up-btn" id="button-4">Level Up!</button>
+        </div>
+
+        <div class="upgrade">
+            <div>
+                <div class="upgrade_name"> Diamond Pickaxe: <span id="levelUpButton-5-cost"></span></div>
+                <div><span class="subupgrade_name">LEVEL <span id="levelUpButton-5-level"></span></span> (+<span id="bonus-5-upgrade"></span> cookies per sec)</div>
+            </div>
+            <button class="level-up-btn" id="button-5">Level Up!</button>
+        </div>
+
+    </section>
+
+</main>
+
+</body>
+</html>
