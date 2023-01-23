@@ -18,6 +18,7 @@ p{
     margin: 0;
 }
 
+
 .main_container{
     width: 1000px;
     height: 500px;
@@ -47,13 +48,17 @@ p{
     width: 50%;
 }
 
-.right_column{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 50%;
-    justify-content: space-evenly;
-    padding: 0 50px;
+/*.right_column{*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    align-items: center;*/
+/*    width: 50%;*/
+/*    justify-content: space-between;*/
+/*    padding: 0 50px;*/
+/*}*/
+
+.right_column {
+    display: grid;
 }
 
 .project_name{
@@ -70,15 +75,20 @@ p{
 
 .upgrade{
     display: flex;
-    flex-direction: row;
     align-items: center;
+    /*justify-content: space-between;*/
+    gap: 20px;
     justify-content: space-between;
+
+
 }
 
 
 .upgrade_name{
     color: #55FFFF;
     font-weight: bold;
+    text-align: left;
+    width: 200px;
 }
 
 .subupgrade_name{
@@ -124,3 +134,12 @@ p{
     color: #55FFFF;
 }
 
+/* NEW */
+.img-axe {
+    height: 80px;
+    width: 80px;
+}
+
+.example {
+
+}

@@ -4,20 +4,15 @@ let diamondsPerClick = 1;
 let diamondsPerSecond = 0;
 let upgradesCosts = [10, 100, 1000, 5000, 100000];
 let upgradesBonusMultiplier = [0.1, 1, 5, 10, 100];
-let levels = [1, 1, 1, 1, 1];
+
 
 const diamondsSelector = document.querySelector('#diamond');
 const diamondsPerClickSelector = document.querySelector('#diamonds_per_click');
-const diamondsPerSecondSelector = document.querySelector('#diamonds_per_second');
+const diamondsPerSecondSelector = document.querySelector('#diamonds_per_sec');
 const gainedDiamondsSelector = document.querySelector('#gained_diamonds');
 
-const levelUpButtons = [
-    document.querySelector('#levelUpButton1'),
-    document.querySelector('#levelUpButton2'),
-    document.querySelector('#levelUpButton3'),
-    document.querySelector('#levelUpButton4'),
-    document.querySelector('#levelUpButton5'),
-];
+const levelUpButtonsNodeArr = document.querySelectorAll('.level-up-button');
+const levelUpButtons = [...levelUpButtonsNodeArr];
 
 // Event Listener for cookie click
 diamondsSelector.addEventListener('click', () => {
@@ -29,23 +24,36 @@ diamondsSelector.addEventListener('click', () => {
     checkIfBonusesAvailable();
 });
 
+// DON'T ADD EVENT LISTENER TO EACH BUTTON -> EVENTS SHOULD BE DELEGATED TO THE PARENT AND BASED ON THE CONDITION SOME ACTIONS SHOULD BE PERFORMED (e.target)
+levelUpButtons.forEach(function(button, index) {
+       button.addEventListener('click', function() {
+           if(button.classList.contains('level_up_button_ready')) {
+               diamondsPerClick += upgradesBonusMultiplier.at(index) + 0.1 * diamondsPerSecond;
+               diamondsPerSecond += upgradesBonusMultiplier.at(index);
+               diamondsCounter -= upgradesCosts.at(index);
+               upgradesCosts[i-1] = Math.round(upgradesCosts.at(index) * 1.3);
+               updateMainContainer();
+               setValues();
+               checkIfBonusesAvailable();
+           }
+       })
+})
+
 // Event Listener for Level-Up Buttons click
-for(let i=1; i<=5; i++){
-    levelUpButtons.at(i-1).addEventListener('click', () => {
-        if(levelUpButtons.at(i-1).classList.contains('level_up_button_ready')){
-            levels[i-1]++;
-            diamondsPerClick += upgradesBonusMultiplier.at(i-1) + 0.1 * diamondsPerSecond;
-            diamondsPerSecond += upgradesBonusMultiplier.at(i-1);
-            diamondsCounter -= upgradesCosts.at(i-1);
-            upgradesCosts[i-1] = Math.round(upgradesCosts.at(i-1) * 1.3);
-            updateMainContainer();
-            setValues();
-            checkIfBonusesAvailable();
-        }
-    });
-}
-
-
+// for(let i=1; i<=5; i++){
+//     levelUpButtons.at(i-1).addEventListener('click', () => {
+//         if(levelUpButtons.at(i-1).classList.contains('level_up_button_ready')){
+//             levels[i-1]++;
+//             diamondsPerClick += upgradesBonusMultiplier.at(i-1) + 0.1 * diamondsPerSecond;
+//             diamondsPerSecond += upgradesBonusMultiplier.at(i-1);
+//             diamondsCounter -= upgradesCosts.at(i-1);
+//             upgradesCosts[i-1] = Math.round(upgradesCosts.at(i-1) * 1.3);
+//             updateMainContainer();
+//             setValues();
+//             checkIfBonusesAvailable();
+//         }
+//     });
+// }
 function checkIfBonusesAvailable(){
     for(let i=1; i<=5; i++){
         if(Number(gainedDiamondsSelector.innerText) >= upgradesCosts.at(i-1))
@@ -62,9 +70,9 @@ function updateMainContainer(){
 }
 
 function setValues(){
-    for(let i=0; i<=4; i++){
+    for(let i=1; i<=5; i++){
         let costId = '#levelUpButton' + i + '_cost';
-        let upgradeId = '#levelUpButton' + i + '_upgrade';
+        let upgradeId = '#levelUpButton' + i + '_upgrade'
         document.querySelector(costId).innerText = upgradesCosts.at(i-1);
         document.querySelector(upgradeId).innerText = upgradesBonusMultiplier.at(i-1);
     }
